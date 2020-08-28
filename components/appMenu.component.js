@@ -25,7 +25,7 @@ const appMenu = () => {
 
     const hooks = ({state, methods}) => ({
         afterOnInit () {
-            store.subscribe(methods.updateState)
+            store.subscribe(methods.changeMenu)
         }
     })
 
@@ -34,23 +34,17 @@ const appMenu = () => {
         onChangeList () {
             const li = queryAll('li')
 
-            on('click', li, () => methods.changeMenuList())
+            on('click', li, () => methods.changeMenu())
         }
 
     })
 
-    const methods = ({props, state, elm}) => ({
-        changeMenuList (newState) {
+    const methods = ({props, state, elm}) => ({ 
+        changeMenu (payload) {
+            console.log(payload)
+            if(!payload) return
+            state.set({menuList: payload.menuList})
 
-            store.update((storeData) => {
-                storeData.menuList = []
-                return storeData
-            })
-
-        },
-        updateState (newState) {
-            state.set(store.get())
-            console.log('--->', state.get(), elm)
         }
     })
 

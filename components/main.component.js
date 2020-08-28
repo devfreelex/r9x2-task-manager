@@ -27,13 +27,13 @@ const appMain = () => {
 
     const hooks = ({state}) => ({
         afterOnInit () {
-            // setTimeout(() => {
-            //     store.update((storeData) => {
-            //         storeData.menuList = []
-            //         return storeData
-            //     })
-            //     console.log('changed')
-            // },3000)
+            setTimeout(() => {
+                store.update((storeData) => {
+                    storeData.menuList = []
+                    return storeData
+                })
+                console.log('changed')
+            },3000)
         }
     })
 
