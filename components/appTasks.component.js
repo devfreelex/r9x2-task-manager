@@ -1,4 +1,5 @@
 import { store } from '../store.js'
+import { appCreate } from './appCreate.component.js'
 
 const appTasks = () => { 
 
@@ -17,6 +18,7 @@ const appTasks = () => {
         return /*html*/`
             <div class="task-wrapper">
                 <h1 class="title">${state.title}</h1>
+                <app-create></app-create>
                 <ul class="task-list">
                     ${taskList(state.tasks)}
                 </ul>
@@ -63,9 +65,15 @@ const appTasks = () => {
         `
     }
 
+    const children = () => ({
+        appCreate
+    })
+
     const hooks = ({state, methods}) => ({
         beforeOnInit () {
-            
+            store.subscribe((data) => {
+                state.set(data)
+            })
         }
     })
 
@@ -78,10 +86,11 @@ const appTasks = () => {
 
     const methods = ({props, state}) => ({
         removeTask ({target}) {
-            const id = +target.getAttribute('id')
-            const tasks = store.get().tasks.filter( task => task.id !== id)
-            store.update((store) => store.tasks = tasks)
-            state.set({tasks})
+            store.update((storeState) => {
+                const id = +target.getAttribute('id')
+                const tasks = storeState.tasks.filter(task => task.id !== id)
+                storeState.tasks = tasks
+            })
         }
     })
 
@@ -90,6 +99,7 @@ const appTasks = () => {
         state,
         template,
         styles,
+        children,
         hooks,
         events,
         methods
