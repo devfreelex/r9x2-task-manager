@@ -83,7 +83,6 @@ const appCreate = () => {
 
     const hooks = ({elm}) => ({
         beforeOnInit () {
-            console.log(elm)
         }
     })
 
@@ -99,20 +98,23 @@ const appCreate = () => {
         }
     })
 
-    const methods = ({props, state}) => ({
+    const methods = ({elm, props, state}) => ({
         addTask (taskTitle) {
             const task = {id: store.get().tasks.length + 1, title: taskTitle}
-            store.update((state) => state.tasks.push(task))
+            store.update((storeState) => {
+                storeState.tasks.push(task)
+            })
         },
         validate ({target}) {
             const value = target.value
             const isValid = value && value.length >= 5 ? true : false
+            let inputTask = null
             state.set({isValid})
-            setTimeout(() => {
-                const element = document.querySelector('#task')
-                element.value = value
-                element.focus()
-            },100)
+
+            inputTask = elm.querySelector('#task')
+            inputTask.value = value
+            inputTask.focus()
+
         },
         debounce (handler, delay) {
             let debounceTimer
