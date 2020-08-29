@@ -10,13 +10,6 @@ const appHeader = () => {
                     {label: 'Produtos 1', link:'#/products'},
                     {label: 'Não existe 1', link:'#/nao-existe'},
                 ]
-            },
-            {
-                menu: [
-                    {label: 'Home 2', link:'#/'},
-                    {label: 'Produtos 2', link:'#/products'},
-                    {label: 'Não existe 2', link:'#/nao-existe'},
-                ]
             }
         ]
     }
@@ -28,7 +21,6 @@ const appHeader = () => {
     const template = ({state, props}) => {
         return /*html*/`
             <div class="header-wrapper">
-                <h1>${state.title}</h1>
                 <app-menu></app-menu>
             </div>
         `
@@ -43,7 +35,8 @@ const appHeader = () => {
                 width:100%;
                 padding:15px;
                 border:1px #ebebeb solid;
-                box-sizing: border-box
+                box-sizing: border-box;
+                background:blue;
             }
 
            app-header h1 { 

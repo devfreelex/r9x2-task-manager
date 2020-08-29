@@ -1,15 +1,16 @@
 import { r9x } from './lib/r9x.factory.js'
 import { appMain } from './components/main.component.js'
-import { appHome } from './components/appHome.component.js'
+import { appTasks } from './components/appTasks.component.js'
 import { appNotFound } from './components/appNotFound.component.js'
 import { appProducts } from './components/appProducts.component.js'
+import { appCreate } from './components/appCreate.component.js'
 
 const routerConfig = {
-    firstRoute: { hash: '#/', component: appHome },
+    firstRoute: { hash: '#/', component: appTasks },
     defaultRoute: { hash: '#/404', component: appNotFound },
     otherRoutes: [
-        { hashExp: /^\#\/$/, component: appHome },
-        { hashExp: /^\#\/products$/, component: appProducts }
+        { hashExp: /^\#\/$/, component: appTasks },
+        { hashExp: /^\#\/nova-task$/, component: appCreate }
     ]
 }
 

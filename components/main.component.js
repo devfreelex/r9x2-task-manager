@@ -13,7 +13,6 @@ const appMain = () => {
         return /*html*/`
             <div class="app-main-wrapper">
                 <app-header></app-header>
-                <app-header></app-header>
                 <router-view></router-view>
             </div>
         `
@@ -21,19 +20,17 @@ const appMain = () => {
 
     const styles = () => {
         return /*css*/`
-            h1 { color: red }
+           app-main {
+            display: block;
+            float: left;
+            width: 100%;               
+           }
         `
     }
 
     const hooks = ({state}) => ({
         afterOnInit () {
-            setTimeout(() => {
-                store.update((storeData) => {
-                    storeData.menuList = []
-                    return storeData
-                })
-                console.log('changed')
-            },3000)
+
         }
     })
 
