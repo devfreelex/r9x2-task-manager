@@ -9,17 +9,42 @@ const appMenu = () => {
         const menuList = (menuList) => { 
             return menuList.map( menuItem => /*html*/`
                 <li class="menu-item">
-                    <a href="${menuItem.link}">${menuItem.label}</a>
+                    <a class="menu-link" href="${menuItem.link}">${menuItem.label}</a>
                 </li>
             `)
             .join('')
         }
         return /*html*/`
-            <div class="wrapper-menu">
-                <ul>
+            <div class="menu-wrapper">
+                <ul class="menu-list">
                     ${menuList(state.menuList)}
                 </ul>
             </div>
+        `
+    }
+
+    const styles = () => {
+        return /**/`
+           app-header .menu-wrapper,
+           app-header .menu-list,
+           app-header .menu-link {
+                display:block;
+                float:left;
+                width:100%;
+            }
+
+           app-header .menu-item {
+                display:block;
+                float:left;
+            }
+
+            app-header .menu-link {
+                padding:5px;
+                color: #fff;
+                text-transform: uppercase;
+                font-size: .775em;
+                text-decoration: none;
+            }
         `
     }
 
@@ -41,7 +66,6 @@ const appMenu = () => {
 
     const methods = ({props, state, elm}) => ({ 
         changeMenu (payload) {
-            console.log(payload)
             if(!payload) return
             state.set({menuList: payload.menuList})
 
@@ -51,6 +75,7 @@ const appMenu = () => {
     return {
         state,
         template,
+        styles,
         events,
         hooks,
         methods
