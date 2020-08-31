@@ -15,7 +15,7 @@ const appCreate = () => {
             <div class="create-wrapper">
                 <label>
                     <span>Título da tarefa</span>
-                    <input id="task"/>
+                    <input id="task" data-directives="['validateOnChange', 'focusOnChange']"/>
                     ${notification(state.isValid)}
                 </label>
                 <label>
@@ -86,15 +86,29 @@ const appCreate = () => {
         }
     })
 
-    const events = ({query, on, methods}) => ({
+    const events = ({query, on, methods, directives}) => ({
         onClickToSave () {
             const btnAdd = query('button')
-            const inputTask = query('#task')
-            on('click', [btnAdd], () => methods.addTask(inputTask.value))
+            const input = query('#task')
+            const id = input.getAttribute('id')
+            on('click', [btnAdd], () => {
+                methods.addTask(input.value)
+                directives.focusOnChange(input, `#${id}`)
+                directives.clearInput(input)
+            })
         },
         onInputTask () {
             const input = query('#task')
-            on('keyup', [input], methods.debounce(methods.validate, 300))
+            const id = input.getAttribute('id')
+            let value = ''
+            
+            on('keyup', [input], ({target}) => {
+                value = target.value
+                directives.validate(input)
+                directives.focusOnChange(input, `#${id}`)                
+            })
+
+            directives.focusAfterOnRender(input, value)
         }
     })
 
@@ -104,17 +118,6 @@ const appCreate = () => {
             store.update((storeState) => {
                 storeState.tasks.push(task)
             })
-        },
-        validate ({target}) {
-            const value = target.value
-            const isValid = value && value.length >= 5 ? true : false
-            let inputTask = null
-            state.set({isValid})
-
-            inputTask = elm.querySelector('#task')
-            inputTask.value = value
-            inputTask.focus()
-
         },
         debounce (handler, delay) {
             let debounceTimer
@@ -126,11 +129,32 @@ const appCreate = () => {
         }
     })
 
+    const directives = ({props, state, methods, query, queryAll}) => ({
+        validate (input) { 
+            const value = input.value
+            const isValid = value && value.length >= 5 ? true : false
+            state.set({ isValid })      
+        },
+        clearInput (input) {
+            input.value = ''
+        },
+        focusOnChange (input, selector) {
+            const inputToUpdate = query(selector)
+            inputToUpdate.value = input.value
+            inputToUpdate.focus() 
+        },
+        focusAfterOnRender (input, value) {
+            input.value = value
+            input.focus()
+        }
+    })
+
     return {
         state,
         template,
         styles,
         methods,
+        directives,
         events,
         hooks
     }
