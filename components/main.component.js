@@ -1,5 +1,5 @@
-import { store } from '../store.js'
-import { appHeader } from './appHeader.component.js'
+import { store } from '../store'
+import { appHeader } from './appHeader.component'
 
 const appMain = () => {
 

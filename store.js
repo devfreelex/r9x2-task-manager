@@ -1,6 +1,6 @@
-import { observerFactory } from './lib/observer.js'
+import { storeFactory } from 'r9x_js'
 
-const store = observerFactory({
+const store = storeFactory({
     menuList: [
         { label: 'tasks', link: '#/' },
         { label: 'Nova task', link: '#/nova-task' },

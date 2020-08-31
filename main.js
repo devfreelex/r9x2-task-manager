@@ -1,9 +1,8 @@
-import { r9x } from './lib/r9x.factory.js'
-import { appMain } from './components/main.component.js'
-import { appTasks } from './components/appTasks.component.js'
-import { appNotFound } from './components/appNotFound.component.js'
-import { appProducts } from './components/appProducts.component.js'
-import { appCreate } from './components/appCreate.component.js'
+import { r9x } from 'r9x_js'
+import { appMain } from './components/main.component'
+import { appTasks } from './components/appTasks.component'
+import { appNotFound } from './components/appNotFound.component'
+import { appCreate } from './components/appCreate.component'
 
 const routerConfig = {
     firstRoute: { hash: '#/', component: appTasks },

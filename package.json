@@ -1,0 +1,52 @@
+{
+    "name": "r9x-template",
+    "version": "1.0.0",
+    "description": "",
+    "main": "main",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "parcel index.html -p 80",
+        "dev": "parcel index.html -p 3000",
+        "prebuild-h": "shx rm -rf dist/**/*",
+        "build-h": "parcel watch index.html & http-server dist --port 8080 -o",
+        "prebuild-p": "shx rm -rf dist/**/*",
+        "build-p": "cross-env NODE_ENV=production parcel build browser index.html --public-url ./"
+    },
+    "browserslist": [
+        "IE 10",
+        "last 3 versions",
+        "not IE < 9"
+    ],
+    "babel": {
+        "presets": [
+            [
+                "@babel/preset-env",
+                {
+                    "useBuiltIns": "usage",
+                    "corejs": 3
+                }
+            ]
+        ]
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@babel/core": "^7.9.0",
+        "@babel/preset-env": "^7.9.5",
+        "@babel/runtime-corejs3": "^7.9.2",
+        "autoprefixer": "^9.7.6",
+        "babel-cli": "^6.26.0",
+        "babel-preset-es2015-ie": "^6.7.0",
+        "core-js": "^3.6.4",
+        "cross-env": "^7.0.2",
+        "parcel-bundler": "^1.12.4",
+        "shx": "^0.3.2"
+    },
+    "dependencies": {
+        "@babel/cli": "^7.8.4",
+        "mdn-polyfills": "^5.20.0",
+        "r9x_js": "^2.0.0",
+        "whatwg-fetch": "^3.0.0"
+    }
+}

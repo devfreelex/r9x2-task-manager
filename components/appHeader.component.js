@@ -1,4 +1,4 @@
-import { appMenu } from './appMenu.component.js'
+import { appMenu } from './appMenu.component'
 
 const appHeader = () => {
     const state = {

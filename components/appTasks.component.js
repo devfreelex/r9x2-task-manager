@@ -1,5 +1,5 @@
-import { store } from '../store.js'
-import { appCreate } from './appCreate.component.js'
+import { store } from '../store'
+import { appCreate } from './appCreate.component'
 
 const appTasks = () => { 
 
