@@ -15,7 +15,7 @@ const appCreate = () => {
             <div class="create-wrapper">
                 <label>
                     <span>Título da tarefa</span>
-                    <input id="task" data-directives="['validateOnChange', 'focusOnChange']"/>
+                    <input id="task"/>
                     ${notification(state.isValid)}
                 </label>
                 <label>
