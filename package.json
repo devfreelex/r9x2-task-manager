@@ -10,7 +10,7 @@
         "prebuild-h": "shx rm -rf dist/**/*",
         "build-h": "parcel watch index.html & http-server dist --port 8080 -o",
         "prebuild-p": "shx rm -rf dist/**/*",
-        "build-p": "cross-env NODE_ENV=production parcel build browser index.html --public-url ./"
+        "build-p": "cross-env NODE_ENV=production parcel build browser index.html"
     },
     "browserslist": [
         "IE 10",
@@ -46,7 +46,7 @@
     "dependencies": {
         "@babel/cli": "^7.8.4",
         "mdn-polyfills": "^5.20.0",
-        "r9x_js": "^2.0.0",
+        "r9x_js": "^2.0.4",
         "whatwg-fetch": "^3.0.0"
     }
 }

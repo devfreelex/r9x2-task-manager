@@ -1,5 +1,7 @@
 const appProducts = () => {
 
+    const tagName = 'app-products'
+
     const state = {
         title: 'Products'
     }
@@ -33,7 +35,7 @@ const appProducts = () => {
     })
 
 
-    return { state, template, styles, events, methods }
+    return { tagName, state, template, styles, events, methods }
 }
 
 export { appProducts }

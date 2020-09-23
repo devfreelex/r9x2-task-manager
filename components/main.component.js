@@ -3,6 +3,7 @@ import { appHeader } from './appHeader.component'
 
 const appMain = () => {
 
+    const tagName = 'app-main'
     const state = store.get()
 
     const children = () => ({
@@ -35,6 +36,7 @@ const appMain = () => {
     })
 
     return {
+        tagName,
         state,
         template,
         styles,

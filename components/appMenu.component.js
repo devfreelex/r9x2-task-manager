@@ -2,6 +2,8 @@ import { store } from '../store'
 
 const appMenu = () => { 
 
+    const tagName = 'app-menu'
+
     const state = store.get()
 
     const template = ({props, state}) => {
@@ -73,6 +75,7 @@ const appMenu = () => {
     })
 
     return {
+        tagName,
         state,
         template,
         styles,

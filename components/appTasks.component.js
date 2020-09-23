@@ -3,6 +3,8 @@ import { appCreate } from './appCreate.component'
 
 const appTasks = () => { 
 
+    const tagName = 'app-tasks'
+
     const state = {
         title: 'Tasks',
         tasks: store.get().tasks
@@ -96,6 +98,7 @@ const appTasks = () => {
 
 
     return {
+        tagName,
         state,
         template,
         styles,

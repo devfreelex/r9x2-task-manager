@@ -1,6 +1,9 @@
 import { appMenu } from './appMenu.component'
 
 const appHeader = () => {
+    
+    const tagName = 'app-header'
+
     const state = {
         title: 'appHeader',
         menus: [
@@ -47,6 +50,7 @@ const appHeader = () => {
     }
 
     return {
+        tagName,
         state,
         template,
         styles,

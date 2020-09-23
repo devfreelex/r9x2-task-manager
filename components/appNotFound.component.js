@@ -1,5 +1,7 @@
 const appNotFound = () => {
 
+    const tagName = 'app-not-found'
+
     const state = {
         title: 'NotFound'
     }
@@ -19,7 +21,7 @@ const appNotFound = () => {
     }
 
 
-    return { state, template, styles }
+    return { tagName, state, template, styles }
 }
 
 export { appNotFound }

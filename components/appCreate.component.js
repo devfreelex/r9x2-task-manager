@@ -2,6 +2,8 @@ import { store } from '../store'
 
 const appCreate = () => {
 
+    const tagName = 'app-create'
+    
     const state = {
         isValid: false
     }
@@ -150,6 +152,7 @@ const appCreate = () => {
     })
 
     return {
+        tagName,
         state,
         template,
         styles,
